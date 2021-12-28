@@ -10,13 +10,13 @@ script:
 
 after_success:
   - docker build -t humeji/multi-client ./client
-  - docker build -t humeji/multi-ngnix ./ngnix
+  - docker build -t humeji/multi-nginx ./nginx
   - docker build -t humeji/multi-server ./server
   - docker build -t humeji/multi-worker ./worker
 # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # taks those images and push them to docker hub
   - docker push humeji/multi-client
-  - docker push humeji/multi-ngnix
+  - docker push humeji/multi-nginx
   - docker push humeji/multi-server
   - docker push humeji/multi-worker
